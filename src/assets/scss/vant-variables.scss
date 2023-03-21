@@ -1,0 +1,95 @@
+.van-grid-item__content{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.van-nav-bar .van-icon{
+  color: #333333;
+}
+.van-nav-bar__title{
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.van-search{
+  padding: 0;
+}
+
+.van-search-new{
+  flex: 1;
+  height: 29px;
+  background: #ffffff;
+  border-radius: 16px;
+}
+.van-search-new .van-search__content{
+  border-radius: 16px;
+}
+
+.patient-filter .van-dropdown-menu__bar{
+  height: auto;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.patient-filter .van-dropdown-menu__title{
+  padding: 0;
+}
+.patient-filter .van-dropdown-menu__title::after{
+  content: none;
+}
+.patient-filter .van-ellipsis{
+  color: #4186FB;
+}
+/*登陆页form样式*/
+.login-form .van-cell .van-field__left-icon .van-icon {
+  margin-top: 3px;
+}
+
+.login-form .van-field__body{
+  border-bottom: 1px solid #E1E1E1;
+}
+
+.login-form .customize-button{
+  width: 291px;
+  height: 33px;
+  background: #4186FB;
+  border-radius: 3px;
+  border: 1px solid #005EFE;
+  font-size: 15px;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+/*登陆页form样式*/
+
+// class为white-nav内的nav-bar样式
+.white-nav .van-nav-bar{
+  background: none;
+}
+.white-nav .van-nav-bar .van-icon{
+  color: #ffffff;
+}
+.white-nav .van-nav-bar .van-nav-bar__title{
+  color: #ffffff;
+}
+.white-nav .van-hairline--bottom::after {
+  border-bottom-width: 0 !important;
+}
+// class为white-nav内的nav-bar样式
+
+// patientFilter筛查组件--多选框样式
+.patient-filter .van-dropdown-item--down {
+  top: 80px !important;
+}
+
+.patient-filter-list .van-checkbox-group{
+  display: flex;
+  flex-wrap: wrap;
+}
+.patient-filter-list .van-checkbox-group .van-checkbox{
+  margin-top: 18px;
+  width: 33.33333%;
+}
+.patient-filter-list .van-checkbox-group .van-checkbox .van-checkbox__label{
+  font-size: 13px;
+}
+// patientFilter筛查组件样式

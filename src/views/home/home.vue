@@ -1,11 +1,13 @@
 <template>
-  <div class="home">111</div>
+  <div class="home">
+    <a-button></a-button>
+  </div>
 </template>
 
-<script>
-export default {
-  name: 'home'
-}
+<script setup>
+  defineProps({
+    type: String
+  })
 </script>
 
 <style scoped lang="scss">

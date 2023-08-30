@@ -3,6 +3,8 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import Components from 'unplugin-vue-components/vite';
 import { VantResolver } from 'unplugin-vue-components/resolvers'
+import { visualizer } from 'rollup-plugin-visualizer'
+import vitCompression from 'vite-plugin-compression'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -11,9 +13,28 @@ export default defineConfig(({ command, mode }) => {
     root: process.cwd(),
 		plugins: [
 			vue(),
+      // 打包项目后，打开可视工具，分析打包后文件的大小
+      visualizer({
+        open: true
+      }),
 			Components({
 				resolvers: [VantResolver()]
-			})
+			}),
+      // 构建压缩文件
+      vitCompression({
+        // 记录压缩文件及其压缩率,默认为true
+        verbose:true,
+        // 是否禁用压缩
+        disable:false,
+        // 压缩后是否删除原文件
+        deleteOriginFile: false,
+        // 需要使用压缩前的最小文件大小
+        threshold:'10240',
+        // 压缩算法
+        algorithm:'gzip',
+        // 压缩后的文件格式
+        ext:'gz'
+      })
 		],
 		resolve: {
 			alias: {
@@ -23,12 +44,23 @@ export default defineConfig(({ command, mode }) => {
 			extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
 		},
     build: {
-      // 清除console和debugger
+      target: 'modules',
+      outDir: 'dist', // 指定输出路径
+      assetsDir: 'assets', // 指定生成静态文件目录
+      assetsInlineLimit: '4096', // 小于此阈值的导入或引用资源将内联为 base64 编码
+      chunkSizeWarningLimit: 500, // chunk 大小警告的限制
+      minify: 'terser', // 混淆器，terser构建后文件体积更小
+      emptyOutDir: true, //打包前先清空原有打包文件
+      reportCompressedSize: false, // 禁用 gzip 压缩大小报告，可略微减少打包时间
       terserOptions: {
+        // 清除console和debugger
         compress: {
           drop_console: true,
           drop_debugger: true,
         },
+        output: {
+          comments: true // 去掉注释内容
+        }
       },
       rollupOptions: {
         output: {
@@ -41,16 +73,9 @@ export default defineConfig(({ command, mode }) => {
             if (id.includes('node_modules')) {
               return id.toString().split('node_modules/')[1].split('/')[0].toString();
             }
-          },
-        },
-      },
-      target: 'modules',
-      outDir: 'dist', // 指定输出路径
-      assetsDir: 'assets', // 指定生成静态文件目录
-      assetsInlineLimit: '4096', // 小于此阈值的导入或引用资源将内联为 base64 编码
-      chunkSizeWarningLimit: 500, // chunk 大小警告的限制
-      minify: 'terser', // 混淆器，terser构建后文件体积更小
-      emptyOutDir: true //打包前先清空原有打包文件
+          }
+        }
+      }
     },
 		css: {
 			// 配置全局的scss文件,vite不需要安装sass-loader
@@ -64,7 +89,9 @@ export default defineConfig(({ command, mode }) => {
 			}
 		},
 		server: {
-			open: true
+			open: true,
+      // 这样在启动项目的时候，可以通过本地ip地址访问
+      host: '0.0.0.0'
 		}
 	}
 })

@@ -13,22 +13,22 @@
     "@better-scroll/observe-dom": "2.5.1",
     "@better-scroll/pull-down": "2.5.1",
     "@better-scroll/pull-up": "2.5.1",
-    "axios": "^1.5.0",
-    "pinia": "^2.1.6",
-    "vant": "^3.6.0",
-    "vue": "^3.2.47",
-    "vue-router": "4.2.2"
+    "axios": "^1.6.7",
+    "pinia": "^2.1.7",
+    "vant": "^4.8.4",
+    "vue": "^3.4.19",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.3.3",
+    "@vitejs/plugin-vue": "^5.0.4",
     "eslint": "^8.38.0",
     "eslint-define-config": "^1.17.0",
     "eslint-plugin-vue": "^9.9.0",
     "rollup-plugin-visualizer": "^5.9.2",
-    "sass": "^1.59.3",
+    "sass": "^1.71.1",
     "terser": "^5.19.3",
     "unplugin-vue-components": "^0.24.1",
-    "vite": "^4.4.9",
+    "vite": "^5.1.3",
     "vite-plugin-compression": "^0.5.1",
     "vue-eslint-parser": "^9.1.0"
   }

@@ -91,7 +91,15 @@ export default defineConfig(({ command, mode }) => {
 		server: {
 			open: true,
       // 这样在启动项目的时候，可以通过本地ip地址访问
-      host: '0.0.0.0'
+      host: '0.0.0.0',
+      // proxy: {
+      //   '/api': {
+      //     target: 'https://569967a1.r3.cpolar.cn/', // 代理跳转的地址
+      //     rewrite: (path) => path.replace(/^\/api/, ""),
+      //     changeOrigin: true,
+      //     secure: false // 接受 运行在 https 上的服务
+      //   }
+      // }
 		}
 	}
 })
